@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing Docker...
+      - apt-get update
+      - apt-get install -y docker.io
+  build:
+    commands:
+      - echo Building Docker image...
+      - docker build -t flask-app .
+  post_build:
+    commands:
+      - echo Build phase completed successfully.
+      - echo "Ready for deployment."
+
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: no
